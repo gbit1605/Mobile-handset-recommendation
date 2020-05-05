@@ -196,13 +196,13 @@ def euclidean_dist(x1, x2):
     return sqrt(dist)
 
 
-def get_neighbors(data_t, test_row, k, names, reviews):
+def get_neighbors(data_t, test_row, k, names):
     
     distances=[]
     i=0
     for train_row in data_t:
         dist=euclidean_dist(train_row, test_row)
-        distances.append((names[i], train_row, dist, reviews[i]))
+        distances.append((names[i], train_row, dist))
         i+=1
         
     distances.sort(key=lambda tup:tup[2])
@@ -210,11 +210,37 @@ def get_neighbors(data_t, test_row, k, names, reviews):
     neighbors=[]
     
     for i in range(k):
-        neighbors.append((distances[i][0], distances[i][1], distances[i][2], distances[i][3]))
+        neighbors.append((distances[i][0], distances[i][1], distances[i][2]))
     
     return neighbors
 
+def send(handset):
+    for i in data.iterrows():
+        if handset==i[1]['Product_name']:
+            price=i[1]['Product_price']
+            rating=i[1]['rating']
+            break
+        
+    inp=[rating,price]       
+    data_train=[]
+    names=[]
+    #reviews=[]
+    
+    for row, j in data.iterrows():
+        if j['Product_name']!=handset:
+            s=[j['rating'], j['Product_price']]
+            k=j['Product_name']
+            #l=j['final_reviews']
+            data_train.append(s)
+            names.append(k)
+            #reviews.append(l)
+    
+    c=get_neighbors(data_train, inp, 5, names)
+    return c
+d=send("4D MM03 Wireless Telephone (White)")
+print(d)
 
+'''
 def input_func():
     
     price=float(input("Enter the desired price: "))
@@ -272,4 +298,4 @@ if option=='N':
     
     output_func(c)
     
-                                        
+'''                                        

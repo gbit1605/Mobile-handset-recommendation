@@ -1,5 +1,5 @@
 body {
-	background-color: #B0BA32;
+	background-color: #FFFFFF;
 }
 .grid-container {
 	display: grid;
@@ -19,50 +19,94 @@ body {
 	font-size:15;
 	border: none;
 	padding: 5px;
+	white-space: normal;
+	word-wrap: break-word;
 
 }
 
+.b1:hover {
+	background-color: #000000;
+	color: white;
+}
+
 .p {
-	font-family: Times New Roman;
+	font-family: Calibri;
 	font-size: 17;
 }
 
 .alert1 {
 	font-size:14;
-	font-family: Times New Roman;
+	font-family: Calibri;
 	background-color: #FFB6C1;
 	padding: 10px;
 }
 
 .title {
-	font-family: Times New Roman;
+	font-family: Calibri;
 	text-align: center;
 }
 
 .div_left{
+	width=50%;
 	float: left;
+	display: inline-block;
 }
 
 .div_right{
+	width: 50%;
 	float: right;
-	background-color: #FFB6C1;
 	word-wrap: break-word;
+	display: inline-block;
+	text-align: center;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
 }
 
-.p1 {
-	word-wrap: break-word;
+.trend{
+	text-align: center;
 }
-.p2 {
-	word-wrap: break-word;
+
+.price_vs_rating {
+	float: left;
 }
-.p3 {
-	word-wrap: break-word;
+
+    .image 
+    { 
+    position: relative; /* To help the image + text element to get along with the rest of the page*/ 
+    width: 100%; /* for IE 6 */ 
+	display: flex;
+	justify-content: center;
+    } 
+    h2 
+    { 
+    position: absolute; /* To place the text on the image*/
+    top: 200px; /* The exact location of the text from the top of the image*/
+    left: 0; /* Other beautification stuff */
+    width: 100%; 
+    }
+    /* Coloring time */
+    h2 span /* decorating the text within the span tag */
+    { 
+    color: white; 
+    font: bold 24px/45px Helvetica, Sans-Serif; 
+    letter-spacing: -1px; 
+    background: rgb(0, 0, 0); /* fallback color */ 
+    background: rgba(0, 0, 0, 0.7); padding: 10px; 
+    }
+    h2 span.spacer { padding:0 5px; } /* to pad the background color of text to make it look more elegant */
+	
+.image {
+	justify-content: center;
 }
-.p4 {
-	word-wrap: break-word;
+
+.disp {
+	font-family: Calibri;
 }
-.p5 {
-	word-wrap: break-word;
-}
+
+
+
+
+	
 	
 	

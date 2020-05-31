@@ -7,68 +7,181 @@
             <script type="text/javascript" src="static/javascript.js"></script>
 			<link rel= "stylesheet" href= "static/style.css">
 			
-			<h1 class="title"> Mobile Store </h1>	
+				
 
-        </head>
+        </head> 
 
         <body>
-		<div class="div_left">
-			<div class="grid-container">
+		<div class="image">
+				<img src="static/cover_photo.png" alt="" class="cover_photo" style="width:100%; height:500;"/>
+				<h2>
+					<span>Mobile Store:<span class='spacer'></span><br /><span class='spacer'></span>Fish the best phone from a sea of variety</span> 
+				</h2> 
+			</div>
 			
-				<div class="grid-item">
+			
+		
+		<div>
+			<h3 class="trend"> Trend analysis </h3>
+			<img src="static/price_vs_rating.png" class="price_vs_rating">
+			<img src="static/price_vs_positive_ratings.png" class="price_vs_positive_ratings">
+			<img src="static/pie_chart.png" class="pie">
+			
+		</div>
+		<br>
+		<div>
+			<div class="div_left">
+				<div class="grid-container">
 				
-					<p class="p" id="Amazon Renewed"><b> Amazon Renewed </b></p>
-						<form>
+					<div class="grid-item">
 					
-							<input type="submit" class="b1" value="(Renewed) Asus Zenfone Lite L1 ZA551KL-4G022IN (Gold, 2GB RAM, 16GB Storage)">
-							<input type="submit" class="b1" value="(Renewed) Asus Zenfone Max M2 (Black, 3GB RAM, 32GB Storage)">
-							<input type="submit" class="b1" value="(Renewed) Asus Zenfone Max Pro M1 ZB601KL-4A005IN (Black, 6GB RAM, 64GB Storage)">
-							<input type="submit" class="b1" value="(Renewed) LG V30+ (Black, 128GB)">
-							<input type="submit" class="b1" value="(Renewed) Lenovo K6 Power K33A42 (Silver, 32GB)">
-							<input type="submit" class="b1" value="(Renewed) Mi A1 (Black, 64GB)">
-							<input type="submit" class="b1" value="(Renewed) Mi A1 (Gold, 64GB)">
-							<input type="submit" class="b1" value="(Renewed) Moto G5S Plus (Gold)">
-							<input type="submit" class="b1" value="(Renewed) Motorola Moto G Turbo Edition XT1557 (Black, 16GB)">
-							<input type="submit" class="b1" value="(Renewed) Nokia 6.1 Plus TA-1083 DS (Black, 64GB)">
-							<input type="submit" class="b1" value="(Renewed) OnePlus 6 (Mirror Black 8 GB RAM +128GB)"	>	
+						<p class="p" id="Amazon Renewed"><b> Amazon Renewed </b></p>
+							<form>
 						
-						</form>
+								<input type="submit" class="b1" value="(Renewed) Asus Zenfone Lite L1 ZA551KL-4G022IN (Gold, 2GB RAM, 16GB Storage)" onclick="javascript:changeStyle();" id="1">
+								<input type="submit" class="b1" value="(Renewed) Asus Zenfone Max M2 (Black, 3GB RAM, 32GB Storage)" id="2" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Asus Zenfone Max Pro M1 ZB601KL-4A005IN (Black, 6GB RAM, 64GB Storage)" id="3" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) LG V30+ (Black, 128GB)" id="4" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Lenovo K6 Power K33A42 (Silver, 32GB)" id="5" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Mi A1 (Black, 64GB)" id="6" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Mi A1 (Gold, 64GB)" id="7" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Moto G5S Plus (Gold)" id="8" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Motorola Moto G Turbo Edition XT1557 (Black, 16GB)" id="9" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Nokia 6.1 Plus TA-1083 DS (Black, 64GB)" id="10" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) OnePlus 6 (Mirror Black 8 GB RAM +128GB)" id="11" onclick="javascript:changeStyle();">	
+								<input type="submit" class="b1" value="(Renewed) Redmi 5A MCI3B (Gold, 2GB RAM, 16GB Storage)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Samsung Galaxy ON7 Pro (Black)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Samsung Galaxy On6 SM-J600GZBFINS (Blue, 4GB RAM, 64GB Storage)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Samsung Galaxy S5 SM-G900 (White)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Samsung Galaxy S9 (Coral Blue, 4GB RAM, 128GB Storage)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Sony MDR-XB450 On-Ear Extra Bass Headphones (Blue)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Sony Xperia R1 Dual (Black)" id="11" onclick="javascript:changeStyle();">
+								<input type="submit" class="b1" value="(Renewed) Xiaomi Redmi Note 4 (Black, 32GB)" id="11" onclick="javascript:changeStyle();">
+								
+								
+							
+							</form>
+						
+					</div>
 					
-				</div>
+					<div class="grid-item">
+						<p class="p" id="4D"><b> 4D </b></p>
+							<form>
+								<input type="submit" class="b1" value="4D MM03 Wireless Telephone (White)">
+							</form>
 				
-				<div class="grid-item">
-					<p class="p" id="4D"><b> 4D </b></p>
-						<form>
-							<input type="submit" class="b1" value="4D MM03 Wireless Telephone (White)">
-						</form>
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="Adoniz"><b> Adoniz </b></p>
+							<form>
+								<input type="submit" class="b1" value="ADONIZ Mobile Waterproof Bag Pouch for Phones Touch Sensitive Transparent Cover for Samsung Phones - (Black Matte)">
+								<input type="submit" class="b1" value="Adoniz Mobile Waterproof Bag Pouch for Phones Touch Sensitive Transparent Universal Cover for All Phones - (Random Colour)">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="AGARO"><b> AGARO </b></p>
+							<form>
+								<input type="submit" class="b1" value="AGARO Flexy Sports Bluetooth Wireless Earphone with Deep Rich Bass & Hands Free Mic (Blue)">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="A T and T"><b> A T and T </b></p>
+							<form>
+								<input type="submit" class="b1" value="AT&T Universal Car Mount Mobile Holder -CM1 (Black)">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="Aediss"><b> Aeidess </b></p>
+							<form>
+								<input type="submit" class="b1" value="Aeidess Tempered Glass for Samsung Galaxy M30 (Black)-Edge to Edge Full Screen Coverage with easy installation kit">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="Alfa"><b> Alfa </b></p>
+							<form>
+								<input type="submit" class="b1" value="Alfa AWUS036NHA 150Mbps Wireless USB Adaptor">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="AmazonBasics"><b> AmazonBasics </b></p>
+							<form>
+								<input type="submit" class="b1" value="AmazonBasics 3-Pack Executive Stylus for Touchscreen Devices (Black, Silver, Blue)">
+								<input type="submit" class="b1" value="AmazonBasics High-Speed Mini-HDMI (NOT Micro USB/Micro HDMI) to HDMI Cable - 3 Feet (Latest Standard)- NOT Compatible with Mobile Phones">
+								<input type="submit" class="b1" value="AmazonBasics Laptop and Tablet Case, Black, 15.6 inch">
+								<input type="submit" class="b1" value="AmazonBasics Lightweight Mini Tripod">
+								<input type="submit" class="b1" value="AmazonBasics Micro USB Charging Cable for Android Phones with Gold Plated Connectors (10 Feet, Black)">
+								<input type="submit" class="b1" value="AmazonBasics Micro USB Charging Cable for Android Phones with Gold Plated Connectors (3 Feet, Black) - 2 Pack">
+								<input type="submit" class="b1" value="AmazonBasics Micro USB Charging Cable for Android Phones with Gold Plated Connectors (3 Feet, Black) - 3 Pack">
+								<input type="submit" class="b1" value="AmazonBasics Micro USB Charging Cable for Android Phones with Gold Plated Connectors (6 Feet, Black)">
+								<input type="submit" class="b1" value="AmazonBasics Micro USB Charging Cable for Android Phones with Gold Plated Connectors (6 Feet, Black) - 2 Pack">
+								
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="A T and T"><b> A T and T </b></p>
+							<form>
+								<input type="submit" class="b1" value="AT&T Universal Car Mount Mobile Holder -CM1 (Black)">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="A T and T"><b> A T and T </b></p>
+							<form>
+								<input type="submit" class="b1" value="AT&T Universal Car Mount Mobile Holder -CM1 (Black)">
+							</form>
+						
+					</div>
+					
+					<div class="grid-item">
+						<p class="p" id="A T and T"><b> A T and T </b></p>
+							<form>
+								<input type="submit" class="b1" value="AT&T Universal Car Mount Mobile Holder -CM1 (Black)">
+							</form>
+						
+					</div>
+					 
+				</div>
+			</div>
 			
-				</div>
+			<div class="div_right" id="dr">
 				
-				<div class="grid-item">
-					<button class="b1" id="Adoniz"> Adoniz </button>
-				</div>
 				
-				<div class="grid-item">
-					<button class="b1" id="AGARO"> AGARO </button>
-				</div>
+				<p id="n", class="disp"></p>
+				<p id="descrip" class="disp"></p>
+				<p id="descri" class="disp"></p>
+				<p id="feas" class="disp"></p>
+				<p id="fea" class="disp"></p>
 				
-				<div class="grid-item">
-					<button class="b1"> AT and T </button>
-				</div>
-				 
+				<p id="head2"></p>
+				<p id="rws" class="r"></p>
+				
+				<p id="head1"></P>		
+				<p id="p1" class="disp"></p>
+				<p id="p2" class="disp"></p>
+				<p id="p3" class="disp"></p>
+				<p id="p4" class="disp"></p>
+				<p id="p5" class="disp"></p>
+							
+				
+				
+				
+				
 			</div>
 		</div>
-		
-		<div class="div_right" id="dr">
-		
-			<p id="p1"></p>
-			<p id="p2"></p>
-			<p id="p3"></p>
-			<p id="p4"></p>
-			<p id="p5"></p>
-			
-		</div>
-
 
 
         </body>

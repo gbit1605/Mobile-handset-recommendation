@@ -15,6 +15,7 @@ import nltk
 from textblob import TextBlob
 import matplotlib.pyplot as plt
 from math import sqrt
+import re
 
 data=pd.read_csv('C:\\Gun\\Academics\\6th sem\\DMPA_Lab\\Lab_proj\\amazon_phone_dataset.csv')
 
@@ -25,7 +26,7 @@ data=pd.read_csv('C:\\Gun\\Academics\\6th sem\\DMPA_Lab\\Lab_proj\\amazon_phone_
 #DATA PRE-PROCESSSING
 
 data=data.dropna()
-data=data.drop(['Product_url','Product_img','ans_ask'],axis=1)
+data=data.drop(['Product_url','ans_ask'],axis=1)
 
 #Removing all useless series of dots or special characters
 data['cust_review'] = data['cust_review'].str.replace("[^a-zA-Z0-9***]", " ") 
@@ -92,7 +93,7 @@ for datadict in freq:   #getting the sentiment of each word in the freq list
     for d in datadict:
         for key, value in d.items():
             d[key] = (value,get_review_sentiment(key))
-
+            
   
 final_reviews=[]   #analysing the overall reviews for each product
 for i in freq:
@@ -120,7 +121,7 @@ data=data.drop(['cust_review'],axis=1)
 data['Product_price']=pd.to_numeric(data['Product_price'],errors='coerce') #converting the values in these columns to numeric values
 data['rating']=pd.to_numeric(data['rating'],errors='coerce')
 
-data=data.drop(['total_review','prod_des','feature'],axis=1) #dropping out the extra usless columns
+data=data.drop(['total_review'],axis=1) #dropping out the extra usless columns
 
 
 
@@ -141,8 +142,8 @@ for index, row in corr_matrix_amazon.iterrows(): #checking if highly correlated 
 
 data=data.dropna()#dropping any Nan values that are remaining
 
-'''
 
+'''
 
 '''
 #GRAPH PLOTTING
@@ -153,14 +154,17 @@ xlabel = data["rating"]
 plt.ylabel("Price")
 plt.xlabel("Rating")
 plt.scatter(xlabel, ylabel, alpha=0.1)
+plt.title("Price vs Ratings")
+plt.savefig('price_vs_rating.png')
 plt.show()
-'''
+
+
 #plotting price against average rating for each brand
 brands=[]
 brands=data['by_info']
 brands=brands.unique()  
 brands=list(brands)    
-'''        
+       
 xlabel=brands
 plt.xlabel("Brands")
 ylabel=data.groupby('by_info')['rating'].mean()
@@ -172,19 +176,60 @@ plt.show()
 
 ylabel = data["Product_price"]
 plt.ylabel("Price")
-
+p,n,posi,negi=0,0,[],[]
 for i in final_reviews:
+    p,n=0,0
     for j in i:
         for key,value in j.items():
             if(key=='positive'):
                 p+=1
             else:
                 n+=1
+    posi.append(p)
+    negi.append(n)
+xlabel = posi
+plt.xlabel("Number of positive ratings")
+plt.bar(xlabel, ylabel, alpha=0.75)
+plt.title("Price vs Number of positive ratings")
+plt.savefig('price_vs_positive_ratings.png')
+plt.show()
+
+
+
+data['price_bins']=pd.cut(data['Product_price'],8)
+price_bins_dict={}
+for i in data['price_bins']:
+    if i in price_bins_dict:
+        price_bins_dict[i]+=1
+    else:
+        price_bins_dict[i]=1
+
+        
+labels=list(price_bins_dict.keys())
+sizes=list(price_bins_dict.values())
+
+plt.pie(sizes)
+plt.legend(labels, bbox_to_anchor=(1,0), loc="lower right", bbox_transform=plt.gcf().transFigure)
+plt.title('Number of phones per price range')
+#plt.savefig('pie_chart.png')
+plt.show()
 
 '''
 
 
+'''
+#DOWNLOADING IMAGES
+data['Product_name'] = [re.sub(r'\"', 'inches', i) for i in data['Product_name']] 
+data['Product_name'] = [re.sub(r'\(|\)|\/|\|\,\|\|', '', i) for i in data['Product_name']] 
 
+
+import urllib.request
+for i in data.iterrows():
+    try:
+        urllib.request.urlretrieve(str(i[1]['Product_img']), "static/%s.jpg"%(str(i[1]['Product_name'])))
+    except FileNotFoundError or OSError:
+        pass
+'''
 
 #KNN MODEL FOR RECOMMENDATION
 
@@ -196,13 +241,13 @@ def euclidean_dist(x1, x2):
     return sqrt(dist)
 
 
-def get_neighbors(data_t, test_row, k, names):
+def get_neighbors(data_t, test_row, k, names, r, des, feat):
     
     distances=[]
     i=0
     for train_row in data_t:
         dist=euclidean_dist(train_row, test_row)
-        distances.append((names[i], train_row, dist))
+        distances.append((names[i], train_row, dist, r, des, feat))
         i+=1
         
     distances.sort(key=lambda tup:tup[2])
@@ -210,7 +255,7 @@ def get_neighbors(data_t, test_row, k, names):
     neighbors=[]
     
     for i in range(k):
-        neighbors.append((distances[i][0], distances[i][1], distances[i][2]))
+        neighbors.append((distances[i][0], distances[i][1], distances[i][2], distances[i][3], distances[i][4], distances[i][5]))
     
     return neighbors
 
@@ -219,12 +264,14 @@ def send(handset):
         if handset==i[1]['Product_name']:
             price=i[1]['Product_price']
             rating=i[1]['rating']
+            rew=i[1]['final_reviews']
+            descp=i[1]['prod_des']
+            features=i[1]['feature']
             break
         
     inp=[rating,price]       
     data_train=[]
     names=[]
-    #reviews=[]
     
     for row, j in data.iterrows():
         if j['Product_name']!=handset:
@@ -233,69 +280,6 @@ def send(handset):
             #l=j['final_reviews']
             data_train.append(s)
             names.append(k)
-            #reviews.append(l)
     
-    c=get_neighbors(data_train, inp, 5, names)
-    return c
-d=send("4D MM03 Wireless Telephone (White)")
-print(d)
-
-'''
-def input_func():
-    
-    price=float(input("Enter the desired price: "))
-    rating=float(input("Enter the desired rating: "))
-    recom=int(input("Enter the number of recommendations that you would like to receive: "))
-    
-    opt=input("Do you wish to view phones of a specific company? (y/n) ")
-    if opt=='y':
-        opt='Y'
-        for i in brands:
-            print(i,end='\t')
-    elif opt=='n':
-        opt='N'        
-    else:
-        print("Please enter a correct value")
-        
-    return [rating, price], opt, recom
-
-
-def output_func(n):
-    
-    print("")
-    print("RECOMMENDED GADGETS FOR YOU ARE: ")
-    print("")
-    for i in n:
-        print(i[0])
-        print("Price: ",i[1][1])
-        print("Rating: ",i[1][0])
-        print("Distance: ",i[2])
-        print("Other reviews include: ")
-        f=0
-        for j in i[3]:
-            f+=1
-            print(f,"]",j)
-            
-        print("")
-
-inp,option,r=input_func()
-
-if option=='N':
-    
-    data_train=[]
-    names=[]
-    reviews=[]
-    
-    for row, i in data.iterrows():
-        s=[i['rating'], i['Product_price']]
-        k=i['Product_name']
-        l=i['final_reviews']
-        data_train.append(s)
-        names.append(k)
-        reviews.append(l)
-    
-    c=get_neighbors(data_train, inp, r, names, reviews)
-    
-    output_func(c)
-    
-'''                                        
+    c=get_neighbors(data_train, inp, 5, names, rew, descp, features)
+    return c                                       

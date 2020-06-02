@@ -8,7 +8,7 @@ This project comprises of 4 parts:
     A UI for choosing among different handsets to obtain recommendations
 
 The project can be run by the following these steps:
-1. Run app_runner.py file
+1. Run app_runner.py file. This file connects the backend and the frontend. 
 2. Goto http://127.0.0.1:5000/ in the browser
 3. Click on the model names to yield their descriptions and 5 related recommendations
 

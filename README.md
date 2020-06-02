@@ -16,4 +16,4 @@ Accuracy measure used: Precision
 
 Precision = (recommended ∩ relevant) / recommended 
 
-Here, recommended is the number of recommedations given for each product and relevant are the number of those recommendations that have a value lower than that of a dynamic threshold. The dynamic threshold, in this case hase been defined as, (avg of the five recommedation distances + distance value of recommendation 5 / 5) where recommedation 1 is the closest match and recommedation 5 is the farthest. 
+Here, recommended is the number of recommedations given for each product and relevant are the number of recommendations that have a value lower than that of a dynamic threshold. The dynamic threshold, in this case hase been defined as, (avg of the five recommedation distances + distance value of recommendation 5 / 5) where recommedation 1 is the closest match and recommedation 5 is the farthest. 

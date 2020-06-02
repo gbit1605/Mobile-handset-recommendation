@@ -14,7 +14,8 @@ $(document).ready(function() {
 				reviews : "",
 				description: "",
 				features: "",
-				namess: ""
+				namess: "",
+				a: ""
 				
 			},
 			type : 'POST',
@@ -38,6 +39,7 @@ $(document).ready(function() {
 				d=data.description;
 				f=data.features; 
 				final_name=data.namess;
+				accuracy="Precision: "+data.a;
 				
 				$('#n').text(final_name).show();
 				$('#descrip').text(disp_head3).show();
@@ -52,9 +54,7 @@ $(document).ready(function() {
 				$('#p3').text(disp3).show();
 				$('#p4').text(disp4).show();
 				$('#p5').text(disp5).show();
-								
-				
-				
+				$('#acc').text(accuracy).show();		
 
 		});
 

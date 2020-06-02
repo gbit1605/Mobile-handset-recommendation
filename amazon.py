@@ -8,7 +8,6 @@ Created on Sat Feb 22 19:16:25 2020
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing
-from sklearn.preprocessing import OneHotEncoder 
 from nltk.stem.porter import *
 from nltk.stem import WordNetLemmatizer 
 import nltk
@@ -277,9 +276,30 @@ def send(handset):
         if j['Product_name']!=handset:
             s=[j['rating'], j['Product_price']]
             k=j['Product_name']
-            #l=j['final_reviews']
             data_train.append(s)
             names.append(k)
     
     c=get_neighbors(data_train, inp, 5, names, rew, descp, features)
-    return c                                       
+    return c    
+
+
+
+def accuracy(hand):
+    """
+    Precision = (recommended ∩ relevant) /recommended 
+    """                      
+    
+    send1=send(hand)
+    d1,d2,d3,d4,d5=round(send1[0][2],3),round(send1[1][2],3),round(send1[2][2],3),round(send1[3][2],3), round(send1[4][2],3)
+    f=[d1,d2,d3,d4,d5]
+
+    avg=(d1+d2+d3+d4+d5)/5
+    
+    count=0
+    for i in f:
+        if i<=(avg+d5/5):
+            count+=1
+    
+    precision=count/5
+
+    return precision

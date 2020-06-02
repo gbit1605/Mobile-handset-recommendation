@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask import Flask, render_template
-from amazon import send
+from amazon import send, accuracy
 
 app = Flask(__name__)
 
@@ -12,9 +12,9 @@ def get_node_ui():
 
 def process():
     name = request.form['name1']
-    #dist=request.form['dist']
     
     value=send(name)
+    acc=str(accuracy(name))
     
     name1=str(value[0][0])+"  "+"Distance: "+str(round(value[0][2],3))
     name2=str(value[1][0])+"  "+"Distance: "+str(round(value[1][2],3))
@@ -27,7 +27,7 @@ def process():
     
     
     return jsonify({'name1': name1, 'name2': name2, 'name3': name3, 'name4': name4, 'name5': name5, 
-                    'reviews': reviews, 'description': description, 'features': feats, 'namess':name})
+                    'reviews': reviews, 'description': description, 'features': feats, 'namess':name, 'a':acc})
 
 
 if __name__=='__main__':    
